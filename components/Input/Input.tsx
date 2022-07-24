@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { SetStateAction, useCallback, useState } from "react";
 import { useAuth } from "../AuthProvider/AuthContext";
 import { useRouter } from "next/router";
 const Input = () => {
@@ -10,13 +10,13 @@ const Input = () => {
         login(data);
     }, [login])
 
-    const handleChange = (e) => {
+    const handleChange = (e: { preventDefault: () => void; target: { value: SetStateAction<string>; }; }) => {
         e.preventDefault();
         setLoginData(e.target.value)
 
     };
-    const handleSubmit = useCallback((e) => {
-        e.preventDefault();
+    const handleSubmit = useCallback(() => {
+
         onSubmit(loginData);
         router.push('/')
     }, [onSubmit, loginData, router])
