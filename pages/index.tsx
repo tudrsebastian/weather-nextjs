@@ -5,7 +5,6 @@ import styles from '../styles/Home.module.css'
 import Main from './Main/main'
 import { useRouter } from 'next/router'
 import { useAuth } from '../components/AuthProvider/AuthContext'
-import { useEffect } from 'react'
 
 const Home: NextPage = () => {
   const { logout, user } = useAuth();
