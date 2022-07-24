@@ -9,7 +9,7 @@ interface User {
 }
 interface authContextType {
     user: string,
-    login: () => void,
+    login: (user: string) => void,
     logout: () => void,
 }
 const authContextDefault: authContextType = {

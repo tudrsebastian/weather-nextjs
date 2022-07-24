@@ -4,9 +4,9 @@ import React from 'react'
 const Weather = ({ city, weather, country, wind, clouds, temp, humidity, feels, tempMax, tempMin }) => {
 
 
-    const main = weather.map((weather) => weather.main)
+    const main = weather.map((weather: { main: string }) => weather.main)
 
-    const description = weather.map((weather) => weather.description)
+    const description = weather.map((weather: { description: string }) => weather.description)
 
     return (
         <div>

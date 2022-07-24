@@ -7,19 +7,15 @@ import { useRouter } from 'next/router'
 import { useAuth } from '../components/AuthProvider/AuthContext'
 
 const Home: NextPage = () => {
-  const { logout, user } = useAuth();
+  const { logout } = useAuth();
   const router = useRouter();
   if (typeof window !== 'undefined') {
     const logged = localStorage.getItem('user');
-    const loggedUser = JSON.parse(logged);
+    const loggedUser = logged !== null ? JSON.parse(logged) : '';
+
     console.log(loggedUser)
     if (loggedUser.authed !== true) router.push('/login/signin')
   }
-
-
-
-
-
 
 
 
@@ -35,7 +31,7 @@ const Home: NextPage = () => {
 
       </p>
       <Main />
-      Logged In : {user.user}
+
     </div>
   )
 }
