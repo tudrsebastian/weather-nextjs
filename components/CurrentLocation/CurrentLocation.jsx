@@ -20,6 +20,9 @@ import {API_KEY} from '../../pages/api/weatherAPI';
     }
 
 
+
+    useEffect(()=>{
+      
 const fetchWeather = async () =>{
     try{
   await window.navigator.geolocation.getCurrentPosition(savePosition);
@@ -35,10 +38,8 @@ const fetchWeather = async () =>{
         console.error(err);
     }
 }
-
-    useEffect(()=>{
-        fetchWeather();
-    },[])
+fetchWeather();
+    })
   return (
     <>
     
