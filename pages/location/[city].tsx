@@ -4,8 +4,10 @@ import cities from '../../components/lib/city.list.json';
 import Head from 'next/head';
 import Weather from '../../components/Weather/Weather';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { API_KEY } from '../api/weatherAPI';
 //@ts-ignore
-const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
+// const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
 //@ts-ignore
 export async function getServerSideProps(context) {
     const city = getCity(context.params.city)
@@ -70,7 +72,14 @@ const getCity = param => {
 }
 // @ts-ignore
 export default function City({ city, weather, country, temp, wind, clouds, feels, humidity, tempMax, tempMin }) {
+    const router = useRouter();
+    if (typeof window !== 'undefined') {
+        const logged = localStorage.getItem('user');
+        const loggedUser = logged !== null ? JSON.parse(logged) : '';
 
+        console.log(loggedUser)
+        if (loggedUser.authed !== true) router.push('/login/signin')
+    }
     return (
         <div>
             <Head>

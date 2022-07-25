@@ -12,9 +12,9 @@ const Home: NextPage = () => {
   if (typeof window !== 'undefined') {
     const logged = localStorage.getItem('user');
     const loggedUser = logged !== null ? JSON.parse(logged) : '';
-
     console.log(loggedUser)
     if (loggedUser.authed !== true) router.push('/login/signin')
+
   }
 
 
